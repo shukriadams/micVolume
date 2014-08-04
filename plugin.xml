@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" id="com.shukriadams.micVolume" version="0.1.0">
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>     
+    <name>MicVolume</name>
+    <description>Reads microphone volume from device</description>
+    <author>Shukri Adams</author>
+    <license>MIT</license>
+    <keywords>phonegap,audio,mic,microphone,volume,amplitude</keywords>
+    <js-module src="www/micVolume.js" name="MicVolume">
+        <clobbers target="window.micVolume" />
+    </js-module>
+     <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="MicVolumePlugin">
+                <param name="android-package" value="com.shukriadams.micVolume.MicVolumePlugin"/>
+            </feature>
+        </config-file>
+ 
+        <source-file src="src/android/MicVolumePlugin.java" target-dir="src/com/shukriadams/micVolume" /><config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+        </config-file>     
+     </platform>          
+</plugin>
